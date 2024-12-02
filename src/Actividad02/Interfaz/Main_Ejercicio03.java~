@@ -1,0 +1,13 @@
+package Actividad02.Interfaz;
+
+public class Main_Ejercicio03 {
+    /*Partiendo del fichero de restaurantes.csv, crear un programa
+    de Java que permita al usuario añadir datos nuevos a ese
+     fichero, utilizando el mismo formato que los ya existentes.*/
+
+    public static void main(String[] args) {
+        String ruta = "E:\\2DAM\\AccesoADatos\\Tema_02\\IntelliJ\\Ficheros\\src\\Actividad02\\Datos";
+        String ficheroOrigen = "restaurantes.csv";
+        String ficheroDestino = "restauranteOut.csv";
+    }
+}

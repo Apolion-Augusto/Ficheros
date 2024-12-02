@@ -4,6 +4,7 @@ import Actividad02.Logica.Conjunto;
 import Actividad02.Logica.Restaurante;
 
 import java.io.*;
+import java.util.Set;
 
 public class GestorCSV {
 
@@ -92,4 +93,32 @@ public class GestorCSV {
         }
 
     }
-}
+
+    public void guardarDatos(String ruta, String ficheroDestino, Conjunto conjunto) {
+        BufferedWriter buffer = null;
+
+        try{
+            buffer = new BufferedWriter(new FileWriter(new File(ruta, ficheroDestino)));
+            Set<Restaurante> conjuntoRestaurantes = conjunto.getConjunto();
+
+            String cabecera = "NOMBRE;DIRECCION;CIUDAD;PROVINCIA;CP\n";
+            buffer.write(cabecera);
+
+            for(Restaurante r : conjuntoRestaurantes){
+                String linea = r.getNombre()+";"+r.getDireccion()+";"+r.getCiudad()+";"+r.getProvincia()+";"+r.getCp()+"\n";
+                buffer.write(linea);
+            }
+
+
+        } catch (IOException e) {
+                System.out.println("ERROR. Escritura Fichero" +e.getMessage());
+
+        } finally {
+            try {
+                buffer.close();
+            } catch (IOException e) {
+                System.out.println("ERROR. I/O." +e.getMessage());
+            }
+        }
+        }
+    }

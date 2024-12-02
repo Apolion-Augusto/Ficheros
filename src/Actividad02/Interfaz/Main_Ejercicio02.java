@@ -25,6 +25,7 @@ public class Main_Ejercicio02 {
 
         List <Restaurante> lista = conjunto.listaRestaurantes();
 
+        System.out.println("Los restaurantes con codigo postal 6 son: \n");
         for(Restaurante r : lista) {
             if(r.getCp().startsWith("6")) {
                 System.out.println(r.toString());
