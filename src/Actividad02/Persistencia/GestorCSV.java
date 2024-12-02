@@ -1,5 +1,8 @@
 package Actividad02.Persistencia;
 
+import Actividad02.Logica.Conjunto;
+import Actividad02.Logica.Restaurante;
+
 import java.io.*;
 
 public class GestorCSV {
@@ -51,4 +54,42 @@ public class GestorCSV {
         }
         return text.toString();
         }
+
+    public void cargarDatos(String ruta, String ficheroOrigen, Conjunto conjunto) {
+        BufferedReader buffer = null;
+        String linea = "";
+        int contLineas = 0;
+
+        try{
+            buffer = new BufferedReader(new FileReader(new File(ruta, ficheroOrigen)));
+            linea = buffer.readLine(); //Cabecera
+            contLineas++;
+
+            while((linea = buffer.readLine()) != null){
+                String [] trozos = linea.split(",");
+                contLineas++;
+
+                if(trozos.length == 5){
+                    Restaurante r =
+                            new Restaurante
+                                    (trozos[0], trozos[1],
+                                            trozos[2], trozos[3], trozos[4]);
+                    conjunto.addRestaurante(r);
+                }else{
+                    System.out.println("ERROR. Mal formato DATOS. Linea: "+contLineas);
+                }
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("ERROR. Fichero no encontrado." +e.getMessage());
+        } catch (IOException e){
+            System.out.println("ERROR. I/O." +e.getMessage());
+        } finally {
+            try {
+                buffer.close();
+            } catch (IOException e) {
+                System.out.println("ERROR. I/O." +e.getMessage());
+            }
+        }
+
     }
+}

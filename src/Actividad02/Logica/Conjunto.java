@@ -23,7 +23,7 @@ public class Conjunto {
         return conjunto;
     }
 
-    public List<Restaurante> ejer02() {
+    public List<Restaurante> listaRestaurantes() {
         // TODO Auto-generated method stub
         //System.out.println("Total restaurante :"+conjunto.size());
         //return "";
