@@ -15,7 +15,7 @@ public class Interfaz {
     String nombreFicheroDestino;
 
     public Interfaz(){
-        String rutafichero = System.getProperty("user.dir")+"\\src\\Actividad03\\Data\\";
+        String rutafichero = System.getProperty("user.dir")+"\\src\\Actividad03\\Data";
         nombreFicheroOrigen = rutafichero+"coches.csv";        
         nombreFicheroDestino = rutafichero+"cochesDestino.csv";
     }
